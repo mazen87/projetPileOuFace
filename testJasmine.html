@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <title>Jasmine Spec Runner v3.6.0</title>
+
+  <link rel="shortcut icon" type="image/png" href="lib/jasmine-3.6.0/jasmine_favicon.png">
+  <link rel="stylesheet" href="lib/jasmine-3.6.0/jasmine.css">
+
+  <script src="lib/jasmine-3.6.0/jasmine.js"></script>
+  <script src="lib/jasmine-3.6.0/jasmine-html.js"></script>
+  <script src="lib/jasmine-3.6.0/boot.js"></script>
+<script>
+
+ function entierAleatoire(min, max)
+        {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+		
+		
+  function compteVoyelles (mot) {
+            // les lettres voyelles
+            let voyelles = ['a','e','i','o','u','y'];
+            let motTableau = mot.split("");
+            let numVoyelle = 0; 
+            for(i =0;i<motTableau.length;i++){
+                for(k=0;k<voyelles.length;k++){
+                    if(motTableau[i]== voyelles[k]){
+                        numVoyelle++;
+                    }
+                }
+
+
+            }
+            //alert(" il y a "+numVoyelle+ " lettre(s) voyelle(s) dans "+ mot);
+            return numVoyelle;
+
+        }
+		
+		
+  function pileOuFace(){
+            let resultat = entierAleatoire(0,1);
+            return resultat;
+        }
+describe("compteVoyelles ", function() {
+
+//test 1
+  it("compte le nombre des lettres voyelles de mot passer en paramétre et renvoie ce nombre", function() {
+    expect(compteVoyelles("aeiou")).toBe(5);
+  });
+  
+  // test2
+   it("compte le nombre des lettres voyelles de mot passer en paramétre et renvoie ce nombre", function() {
+    expect(compteVoyelles("qsdfjklm")).toBe(0);
+  });
+    // test3
+   it("compte le nombre des lettres voyelles de mot passer en paramétre et renvoie ce nombre", function() {
+    expect(compteVoyelles("azerty")).toBe(3);
+  });
+});
+
+
+describe("pileOuFace ", function() {
+
+//test 1
+  it("renvoie 1 si pile et 0 si face ", function() {
+    expect(pileOuFace()).toBe(1,0);
+  });
+  
+  });
+</script
+
+</head>
+
+<body>
+</body>
+</html>
