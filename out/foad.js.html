@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: foad.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: foad.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code> //5
+ var pseudo;
+
+        //function prend en paramétre un pseudo et initialise la variable global avec la valeur passé en paramétre 
+        /**
+         * function prend un pseudo saisie par l'utilisateur et l'utilise pour intialiser la variable global pseudo et le renvoie
+         * @author mazen
+         * @return{string} pseudo
+         */
+        
+        function demandePseudo(){
+            let saisie = prompt(alert(" veuillez choisir un pseudo :"));
+            pseudo = saisie;
+            console.log(pseudo);
+            return pseudo;
+        }
+
+        // 6-function compte les lettres voyelles dans un mot passer en paramétres et renvoie ce nombre 
+        /**
+         * function prend en paramétre une chaine de caractéres et renvoie le nombre de lettres voyelles trouvées
+         * @author mazen
+         * @param {string} mot 
+         * @return {number} nombre de lettres voyelles 
+         */
+        function compteVoyelles (mot) {
+            // les lettres voyelles
+            let voyelles = ['a','e','i','o','u','y'];
+            let motTableau = mot.split("");
+            let numVoyelle = 0; 
+            for(i =0;i&lt;motTableau.length;i++){
+                for(k=0;k&lt;voyelles.length;k++){
+                    if(motTableau[i]== voyelles[k]){
+                        numVoyelle++;
+                    }
+                }
+
+
+            }
+            alert(" il y a "+numVoyelle+ " lettre(s) voyelle(s) dans "+ mot);
+            return numVoyelle;
+
+        }
+        // function qui choisit un nombre alétoire  1 ou 0 
+        /**
+         * function prend en paramétre deux nombres min et max et renvoie un nombre entier entre min et max 
+         * 
+         * @param {number} min 
+         * @param {number} max
+         * @return {number} nombre alétoire entre min et max  
+         */
+        function entierAleatoire(min, max)
+        {
+                return Math.floor(Math.random() * (max - min + 1)) + min;
+        }
+
+        // 7-fonction "pileOuFace()" qui renvoie 1 en cas de pile et 0 en cas de face.
+
+        /**
+         * function renvoie  1(pile) ou 0(face)
+         * @return {number} 1(pile) ou 0(face)
+         */
+        function pileOuFace(){
+            let resultat = entierAleatoire(0,1);
+            return resultat;
+        }
+
+        //fonction "lancerPileOuFace()" qui effectue les opérations suivantes:
+            //Demande au joueur de choisir 1 (pile) ou 0 (face)
+            //Teste que la saisie du joueur soit bien égal à 0 ou 1
+            //Lance aléatoirement une pièce
+            //Renvoie vrai si le joueur a correctement deviné, faux sinon
+            /**
+             * function demande au joueur de choisir 1 (pile) ou 0 (face)
+             *  Teste que la saisie du joueur soit bien égal à 0 ou 1
+             * Lance aléatoirement une pièce
+             * Renvoie vrai si le joueur a correctement deviné, faux sinon
+             * @return {boolean}  resultat 
+             */
+            function lancerPileOuFace() {
+                let resultat = true ; 
+                let saisiePF = prompt(alert(" veuillez choisir  1 pour pile ou 0 pour face "));
+                console.log(saisiePF);
+                while(saisiePF !== "0" &amp;&amp; saisiePF!== "1"){
+                    alert("saisie non valide");
+                    resultat = false;
+            
+                }
+                let numalea = entierAleatoire(0,1);
+                console.log(numalea);
+                if(saisiePF == numalea){
+                        resultat = true;
+                }
+                else{resultat = false;}
+                console.log(resultat);
+                    return resultat;
+            }
+
+            //9) Créez une fonction "jeuPileOuFace()" qui respecte les règles suivantes:
+               // Le joueur démarre avec 3 chances
+                //Le joueur démarre avec un score à 0
+                //Tant que le joueur possède des chances, il peut retenter un lancer
+                //Si le joueur gagne un lancer, son score augmente, sinon ses chances baissent
+                /**
+                 * function respecte les règles suivantes:
+                 * Le joueur démarre avec 3 chances
+                 * Tant que le joueur possède des chances, il peut retenter un lancer
+                 * Si le joueur gagne un lancer, son score augmente, sinon ses chances baissent
+                 * 
+                 * 
+                 */
+                function jeuPileOuFace() {
+                    let numChance = 3 ;
+                    let score = 0;
+                    while(numChance>0){
+                        let lancer = lancerPileOuFace();
+                        if(lancer === true){
+                            score++
+                        }
+                        else{ numChance--;}
+                    }
+                    if(numChance===0){
+                        console.log(score);
+                        alert("votre score est : "+score);
+                    }
+                    
+                    return score;
+
+                }
+</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#compteVoyelles">compteVoyelles</a></li><li><a href="global.html#demandePseudo">demandePseudo</a></li><li><a href="global.html#entierAleatoire">entierAleatoire</a></li><li><a href="global.html#jeuPileOuFace">jeuPileOuFace</a></li><li><a href="global.html#lancerPileOuFace">lancerPileOuFace</a></li><li><a href="global.html#pileOuFace">pileOuFace</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.6</a> on Mon Sep 28 2020 14:57:39 GMT+0100 (GMT+01:00)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
