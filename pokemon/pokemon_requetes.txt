@@ -21,6 +21,8 @@ select pokemon1.nom as pokemon1, pokemon2.nom as pokemon2, c.date_combat from po
 
 select * from pokemon as pokemon1, pokemon as pokemon2, combat as c, relation_p_d as rel1, relation_p_d as rel2, dresseur as d1, dresseur as d2 WHERE pokemon1.id = c.id_pok1 AND pokemon2.id = c.id_pok2 AND rel1.id_pokemon=c.id_pok1 AND rel2.id_pokemon=c.id_pok2 AND rel2.date_fin IS NOT NULL AND rel1.date_fin IS NOT NULL AND d1.id = rel1.id_dresseur AND d2.id = rel2.id_dresseur order by c.date_combat;
 
-//
+//complete 1
 select dresseur1.nom as dresseur1, dresseur2.nom as dresseur2, pokemon1.nom as pokemon1, pokemon2.nom as pokemon2, combat.date_combat from dresseur as dresseur1 , dresseur as dresseur2, relation_p_d as rel1,
 relation_p_d as rel2, pokemon as pokemon1,pokemon as pokemon2 , combat where dresseur1.id = rel1.id_dresseur and dresseur2.id=rel2.id_dresseur and pokemon1.id = rel1.id_pokemon and rel2.id_pokemon = pokemon2.id and rel1.id_pokemon = combat.id_pok1 and rel2.id_pokemon = combat.id_pok2 and rel1.date_fin is not null and rel2.date_fin is not null order by combat.date_combat;
+//complete 2 
+select dresseur1.nom as dresseur1, dresseur2.nom as dresseur2, pokemon1.nom as pokemon1, pokemon2.nom as pokemon2 , combat.date_combat from dresseur as dresseur1 inner join dresseur as dresseur2 inner join relation_p_d as rel1 inner join relation_p_d as rel2 inner join pokemon as pokemon1 INNER join pokemon as pokemon2 INNER join combat on dresseur1.id = rel1.id_dresseur and pokemon1.id = rel1.id_pokemon and pokemon1.id = combat.id_pok1 and dresseur2.id = rel2.id_dresseur and pokemon2.id=rel2.id_pokemon and pokemon2.id = combat.id_pok2 where rel1.date_fin is not null and rel2.date_fin is not null order by combat.date_combat  
