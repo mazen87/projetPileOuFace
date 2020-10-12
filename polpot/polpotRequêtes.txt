@@ -17,4 +17,7 @@ select f.date , d.date from facture f inner join commande INNER join devis d on 
 select d.date, d.prix ,production.id from devis d inner join commande inner join production on d.id = commande.id_devis and commande.id = production.id_commande where production.id= 1
 
 //Le plus gros client de l'année en terme de chiffre d'affaire
-select MAX(SUM(commande.prix)),client.nom from commande inner JOIN devis inner join client on commande.id_devis = devis.id and devis.id_client = client.id;
+
+SELECT c.nom, SUM(com.prix) AS sum_prix FROM client c inner JOIN devis d inner join commande com  ON c.id = d.id_client and d.id = com.id_devis GROUP BY c.nom ORDER BY SUM(com.prix)DESC LIMIT 1 
+
+
