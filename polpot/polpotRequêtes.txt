@@ -20,4 +20,5 @@ select d.date, d.prix ,production.id from devis d inner join commande inner join
 
 SELECT c.nom, SUM(com.prix) AS sum_prix FROM client c inner JOIN devis d inner join commande com  ON c.id = d.id_client and d.id = com.id_devis GROUP BY c.nom ORDER BY SUM(com.prix)DESC LIMIT 1 
 
-
+//Le plus gros client de l'année en terme de quantité produite
+SELECT c.nom, SUM(lien_devis_produit.qte) AS sum_qte FROM client c inner JOIN devis d inner join lien_devis_produit inner join  commande com  ON c.id = d.id_client and d.id = lien_devis_produit.id_devis and  d.id = com.id_devis  GROUP BY c.nom ORDER BY SUM(lien_devis_produit.qte)DESC LIMIT 1
