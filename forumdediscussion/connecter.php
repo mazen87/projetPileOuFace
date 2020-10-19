@@ -26,16 +26,21 @@
         }
         if(empty($erreursCon)){
             //préparer la requête 
-            $requeteConnexion = " select * from user where email = '$loginConn'";
+            echo 1 ;
+            $requeteConnexion = " select * from user where email like '$loginConn'";
             $resultatConn = mysqli_query($link,$requeteConnexion);
             if($resultatConn){
+                echo 2 ;
                 if(mysqli_num_rows($resultatConn)){
+                    echo 3 ;
                 $ligneResultatConn = mysqli_fetch_assoc($resultatConn);
                 //tester le mot de passe 
                 if(password_verify($passwordCon,$ligneResultatConn['motdepasse'])){
+                    echo 4 ;
                     $_SESSION['idClient'] = $ligneResultatConn['id'];
+                    $_SESSION['pseudo'] = $ligneResultatConn['pseudo'];
                     $param =  $_SESSION['idClient'];
-                    header("Location: http://forumdiscussion/chating.php?param=$param");
+                    header("Location: http://forumdiscussion/indexConnecte.php?param=$param");
                     exit();
                 }else{
                     $erreursCon[] = "login ou mot de passe incorrect ou inexistant...!";    
