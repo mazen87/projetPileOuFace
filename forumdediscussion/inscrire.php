@@ -67,9 +67,10 @@
  
                $idClient = mysqli_insert_id($link);
                if($idClient != 0){
-                 $_SESSION['idClient'] = $idClient;
+                       $_SESSION['idClient'] = $idClient;
+                       $_SESSION['pseudo'] = $loginInsc;
                  $param =  $_SESSION['idClient'];
-                 header("Location: http://forumdiscussion/chating.php?param=$param");
+                 header("Location: http://forumdiscussion/indexConnecte.php?param=$param");
              exit();
                }
                
